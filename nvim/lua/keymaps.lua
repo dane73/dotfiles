@@ -15,6 +15,15 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- more keymaps
+vim.keymap.set('n', '<leader>x', vim.cmd.Ex, {desc = 'Explore'})
+require('which-key').register {
+  ['<leader>n'] = { name = '[N]eovim Configurations', _ = 'which_key_ignore' }
+}
+
+vim.keymap.set('n', '<leader>nc', '<cmd>e $HOME/.config/nvim<CR>')
+vim.keymap.set('n', '<leader>nl', '<cmd>e $HOME/.config/nvim/lua/lazy-setup.lua<CR>')
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

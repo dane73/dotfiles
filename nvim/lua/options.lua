@@ -6,7 +6,8 @@
 vim.o.hlsearch = true
 
 -- Make line numbers default
-vim.wo.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 vim.o.cursorline = true
 
 -- Enable mouse mode
@@ -40,3 +41,6 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+--netrw
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3

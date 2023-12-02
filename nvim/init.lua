@@ -8,7 +8,7 @@ require('lazy-bootstrap')
 require('lazy-setup')
 require('colorschemes')
 
-vim.cmd[[colorscheme solarized-osaka]]
+vim.cmd[[colorscheme onedark]]
 
 require('options')
 require('keymaps')
