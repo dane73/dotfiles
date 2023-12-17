@@ -15,14 +15,20 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+--markdown preview
+vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreview<CR>', {desc = 'Markdown Preview'})
+
 -- more keymaps
 vim.keymap.set('n', '<leader>x', vim.cmd.Ex, {desc = 'Explore'})
-require('which-key').register {
-  ['<leader>n'] = { name = '[N]eovim Configurations', _ = 'which_key_ignore' }
-}
-
 vim.keymap.set('n', '<leader>nc', '<cmd>e $HOME/.config/nvim<CR>')
 vim.keymap.set('n', '<leader>nl', '<cmd>e $HOME/.config/nvim/lua/lazy-setup.lua<CR>')
+
+require('which-key').register {
+  ['<leader>n'] = { name = '[N]eovim Configurations', _ = 'which_key_ignore' },
+  ['<leader>l'] = { name = '[L]atex', _ = 'which_key_ignore' },
+  ['<leader>m'] = { name = '[M]arkdown', _ = 'which_key_ignore' }
+}
+
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`

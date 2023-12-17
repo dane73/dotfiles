@@ -1,16 +1,24 @@
 
 local time = os.date("*t")
 
-if time.hour < 8 or time.hour > 16 then
+local timebased = false
+
+if (time.hour < 8 or time.hour > 16) or not timebased then
   vim.o.background = "dark"
 else
   vim.o.background = "light"
 end
 
+require("onedark").setup({
+  transparent =true
+  }
+)
+require("onedark").load()
+
 require("solarized-osaka").setup({
   -- your configuration comes here
   -- or leave it empty to use the default settings
-  transparent = false, -- Enable this to disable setting the background color
+  transparent = (vim.o.background == "dark") and true or false, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
   styles = {
     -- Style to be applied to different syntax groups
@@ -50,6 +58,8 @@ local function setupGruvbox()
     })
   else
     gruvbox.setup({
+      strikethrough = true,
+      transparent_mode = true,
       contrast = "hard",
       palette_overrides = {dark0_hard = "#0E1018"},
       overrides = {
@@ -74,7 +84,7 @@ local function setupGruvbox()
         -- fold
         Folded = {fg = "#fe8019", bg = "#3c3836", italic = true},
         FoldColumn = {fg = "#fe8019", bg = "#0E1018"},
-        SignColumn = {bg = "#fe8019"},
+        --SignColumn = {bg = "#fe8019"},
         -- new git colors
         DiffAdd = { bold = true, reverse = false, fg = "", bg = "#2a4333"},
         DiffChange = { bold = true, reverse = false, fg = "", bg = "#333841" },

@@ -166,6 +166,29 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  --latex
+  {
+    'lervag/vimtex',
+    lazy = false,
+    config = function()
+      vim.g.vimtex_mappings_disable = { ["n"] = { "K" } }
+    end
+  },
+
+  -- [[Markdown]]
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  -- oil because netrw is buggy as shit
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+  }
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
