@@ -1,6 +1,15 @@
 
 -- [[ Basic Keymaps ]]
 
+-- umlaute plus scharfes S
+vim.api.nvim_set_keymap('i', '<A-;>', 'ö', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-S-;>', 'Ö', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-\'>', 'ä', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-S-\'>', 'Ä', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-[>', 'ü', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-S-[>', 'Ü', { noremap = true })
+vim.api.nvim_set_keymap('i', '<A-->', 'ß', { noremap = true })
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
