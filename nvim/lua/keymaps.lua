@@ -26,11 +26,23 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 --markdown preview
 vim.keymap.set('n', '<leader>mp', '<cmd>MarkdownPreview<CR>', {desc = 'Markdown Preview'})
+vim.api.nvim_create_user_command('Pandoc',
+  function (opts)
+    vim.cmd("!pandoc "
+      .. vim.fn.fnameescape(vim.fn.expand("%"))
+      .. " -o " .. vim.fn.fnameescape(vim.fn.expand("%:r")) .. "." .. opts.fargs[1]
+      .. " " .. opts.fargs[2] .. " " .. opts.fargs[3] .. " " .. opts.fargs[4]
+    )
+  end,
+  { nargs = "+" }
+)
+vim.keymap.set('n', '<leader>me' , '<cmd>Pandoc pdf --template eisvogel --listings<CR><cmd>!zathura %:r.pdf &&<CR>', {desc = 'Make pdf with eisvogel template'})
 
 -- more keymaps
-vim.keymap.set('n', '<leader>x', vim.cmd.Ex, {desc = 'Explore'})
+vim.keymap.set('n', '<leader>x', '<cmd>Oil<CR>', {desc = 'Explore'})
 vim.keymap.set('n', '<leader>nc', '<cmd>e $HOME/.config/nvim<CR>')
 vim.keymap.set('n', '<leader>nl', '<cmd>e $HOME/.config/nvim/lua/lazy-setup.lua<CR>')
+vim.keymap.set('n', '<leader>np', '<cmd>NoNeckPain<CR>', {desc = 'Center buffer'})
 
 require('which-key').register {
   ['<leader>n'] = { name = '[N]eovim Configurations', _ = 'which_key_ignore' },

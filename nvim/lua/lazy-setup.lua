@@ -1,4 +1,3 @@
-
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -51,7 +50,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',         opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -105,7 +104,7 @@ require('lazy').setup({
   },
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000 ,
+    priority = 1000,
     config = true
   },
   { "blazkowolf/gruber-darker.nvim" },
@@ -133,8 +132,8 @@ require('lazy').setup({
     opts = {},
   },
 
---  "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  --  "gc" to comment visual regions/lines
+  { 'numToStr/Comment.nvim',       opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -186,9 +185,12 @@ require('lazy').setup({
   -- oil because netrw is buggy as shit
   {
     'stevearc/oil.nvim',
-    opts = {},
+    opts = {show_hidden = true},
+  },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "*"
   }
-
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
@@ -203,4 +205,3 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
 }, {})
-

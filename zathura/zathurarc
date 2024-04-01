@@ -1,0 +1,10 @@
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map p print
+
+set recolor-lightcolor "#0b0f14"
+set recolor true
+set selection-clipboard clipboard

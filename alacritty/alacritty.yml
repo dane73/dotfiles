@@ -1,0 +1,87 @@
+font:
+  # Normal (roman) font face
+  normal:
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    family: iosevka
+
+    # The `style` can be specified to pick a specific face.
+    style: Regular
+
+    # Bold font face
+  bold:
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: iosevka
+
+    # The `style` can be specified to pick a specific face.
+    style: Bold
+
+  # Italic font face
+  italic:
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: iosevka 
+
+    # The `style` can be specified to pick a specific face.
+    style: Italic
+
+  # Bold italic font face
+  bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: iosevka
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
+
+  # Point size
+  size: 14.0
+
+# (Github Dark High Contrast) Colors for Alacritty
+
+colors:
+  # Default colors
+  primary:
+    background: '0x0a0c10'
+    foreground: '0xf0f3f6'
+
+  # Cursor colors
+  #
+  # These will only be used when the `custom_cursor_colors` field is set to `true`.
+  cursor:
+    text: '0x0a0c10'
+    cursor: '0xf0f3f6'
+
+  # Normal colors
+  normal:
+    black: '0x7a828e'
+    red: '0xff9492'
+    green: '0x26cd4d'
+    yellow: '0xf0b72f'
+    blue: '0x71b7ff'
+    magenta: '0xcb9eff'
+    cyan: '0x39c5cf'
+    white: '0xd9dee3'
+
+  # Bright colors
+  bright:
+    black: '0x9ea7b3'
+    red: '0xffb1af'
+    green: '0x4ae168'
+    yellow: '0xf7c843'
+    blue: '0x91cbff'
+    magenta: '0xcb9eff'
+    cyan: '0x39c5cf'
+    white: '0xd9dee3'
+
+window: { opacity: 0.85 }
