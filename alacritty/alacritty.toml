@@ -30,19 +30,19 @@ foreground = "0xf0f3f6"
 size = 14.0
 
 [font.bold]
-family = "InconsolataNerdFontPropo"
+family = "Caskaydia Cove Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "InconsolataNerdFontPropo"
+family = "Caskaydia Cove Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "InconsolataNerdFontPropo"
+family = "Caskaydia Cove Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "InconsolataNerdFontPropo"
+family = "Caskaydia Cove Nerd Font"
 style = "Regular"
 
 #[window]
