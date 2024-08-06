@@ -17,7 +17,7 @@ require("nebulous").setup {
     --CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
 
     -- it is possible to specify only the element to be changed
-    LspDiagnosticsDefaultError = { bg = "#E11313" },
+    -- LspDiagnosticsDefaultError = { bg = "#E11313" },
     --TSTagDelimiter = { style = "bold,italic" },
   }
 }
