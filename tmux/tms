@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+hat_python_venv() {
+    if ! [[ -d "$SELECTED" ]]; then
+        echo "$SELECTED ist kein ordner!"
+        exit 1
+    fi
+    
+    VENV_ACT_FILE="$SELECTED/venv/bin/activate"
+    if [[ -f "$VENV_ACT_FILE" ]];then
+        echo "$VENV_ACT_FILE"; return 0
+    fi
+    VENV_ACT_FILE="$SELECTED/.venv/bin/activate"
+    if [[ -f "$VENV_ACT_FILE" ]];then
+        echo "$VENV_ACT_FILE"; return 0
+    fi
+
+    return 1
+}
+
+erstelle_session() {
+    tmux new-session -ds "$SESSION_NAME" -c "$SELECTED"
+    # tmux new-window -t "$SESSION_NAME":0 -c "$SELECTED"
+    tmux new-window -t "$SESSION_NAME":1 -c "$SELECTED"
+
+    VENV_PATH=$(hat_python_venv)
+    if [[ -n "$VENV_PATH" ]]; then
+        for win in $(tmux list-windows -t "$SESSION_NAME" -F "#{window_index}"); do
+            tmux send-keys -t "$SESSION_NAME:$win" "source $VENV_PATH" C-m
+        done
+    fi
+
+    tmux send-keys -t "$SESSION_NAME":0 "nvim ." C-m
+    tmux select-window -t "$SESSION_NAME":0
+}
+
+PROJECT_DIRS=(~/projects ~/code ~/.config)
+
+PICKER=fzf
+if ! command -v $PICKER &> /dev/null; then
+    echo "$PICKER ist nicht installiert! Bitte installieren."
+    exit 1
+fi
+
+# Alle Projekte sammeln
+PROJECTS=()
+for DIR in "${PROJECT_DIRS[@]}"; do
+    if [ -d "$DIR" ]; then
+        for PROJ in "$DIR"/*; do
+            [ -d "$PROJ" ] && PROJECTS+=("$PROJ")
+        done
+    fi
+done
+
+# Interaktiver Picker
+SELECTED=$(printf '%s\n' "${PROJECTS[@]}" | $PICKER --prompt="Wähle ein Projekt: ")
+
+# Wenn nichts gewählt wurde, Skript beenden
+[ -z "$SELECTED" ] && exit 0
+
+# Session-Name = Projektordnername
+SESSION_NAME=$(basename "$SELECTED")
+
+# Prüfen ob Session existiert
+tmux has-session -t "$SESSION_NAME" 2>/dev/null
+
+if [ $? != 0 ]; then
+    echo "Erstelle neue Session: $SESSION_NAME"
+    erstelle_session
+fi
+
+echo "Verbinde mit bestehender Session: $SESSION_NAME"
+if [ -z "$TMUX" ]; then
+    tmux attach-session -t "$SESSION_NAME"
+else
+    tmux switch-client -t "$SESSION_NAME"
+fi
+    
+
