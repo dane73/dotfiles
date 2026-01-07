@@ -43,7 +43,7 @@ if ! command -v $PICKER &> /dev/null; then
 fi
 
 # Alle Projekte sammeln
-PROJECTS=()
+PROJECTS=(/Users/danilovuletic/dotfiles)
 for DIR in "${PROJECT_DIRS[@]}"; do
     if [ -d "$DIR" ]; then
         for PROJ in "$DIR"/*; do

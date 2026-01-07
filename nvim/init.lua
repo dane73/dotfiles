@@ -3,7 +3,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.winborder = "rounded"
-vim.opt.mouse = ""
+vim.opt.mouse = "n"
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -193,7 +193,7 @@ vim.lsp.config['clangd'] = {
         end, { desc = 'Show symbol info' })
     end,
 }
-vim.lsp.enable({ 'luals', 'basedpyright', 'ruff', 'clangd'})
+vim.lsp.enable({ 'luals', 'basedpyright', 'ruff', 'clangd' })
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
     callback = function(args)
@@ -229,6 +229,12 @@ vim.opt.rtp:prepend(lazypath)
 -- plugins
 require("lazy").setup({
     { "f-person/auto-dark-mode.nvim",    priority = 1000 },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
     { "nvim-treesitter/nvim-treesitter", branch = 'master',   lazy = false,                              build = ":TSUpdate" },
     { 'lewis6991/gitsigns.nvim', },
     { 'ThePrimeagen/harpoon',            branch = 'harpoon2', dependencies = { "nvim-lua/plenary.nvim" } },
@@ -243,6 +249,7 @@ local lightthemes = {
     "morning",
     "peachpuff",
     "shine",
+    "tokyonight-day",
     "zellner",
 }
 
@@ -258,6 +265,9 @@ local darkthemes = {
     "ron",
     "slate", -- hover nicht gut lesbar
     "sorbet",
+    "tokyonight-night",
+    "tokyonight-storm",
+    "tokyonight-moon",
     "torte",
     "unokai",
     "wildcharm", -- gut
